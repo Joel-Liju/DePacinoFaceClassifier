@@ -1,5 +1,5 @@
 # DePacinoFaceClassifier
-This is a project aiming to differentiate between Al Pacino and Robert de niro
+This is a project aiming to differentiate between Al Pacino and Robert De Niro
 
 To run it, you should first make two folders.
 1. images
