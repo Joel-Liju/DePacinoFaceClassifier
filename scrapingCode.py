@@ -19,13 +19,13 @@ def browse_page(person_name, pages, dir):
     seq = 0 #initialize the file number. 
     for i in range(pages): # Loop for the number of pages you want to scrape.
         try:
+            driver.get(url+str(i))
             driver.execute_script('window.scrollTo(0, document.body.scrollHeight);') # Scroll to the end of page.
             time.sleep(2) # Wait for all the images to load correctly.
             images = driver.find_elements(By.XPATH,"//img[contains(@class, 'MosaicAsset-module__thumb___yvFP5')]") # Find all images. TODO this might need to be changed
         except:
             continue
         for image in images: # For each image in one page:
-              print(image)
               try:
                 src = image.get_attribute('src') # Get the link
                 
@@ -33,21 +33,16 @@ def browse_page(person_name, pages, dir):
               except:
                 pass
               seq += 1
-        try:
-          nextpage = driver.find_element(By.CSS_SELECTOR,'.PaginationRow-module__button___QQbMu PaginationRow-module__nextButton___gH3HZ').click() # Move to next page
-        except:
-          pass
         time.sleep(2)
   
 if __name__ == '__main__':
     person_name = "Al-Pacino"#input("Please Provide The Person's Name: \n") 
-    url = "https://www.gettyimages.ca/photos/al-pacino"#input('Please Provide The Page URL: \n')
+    url = "https://www.gettyimages.ca/photos/al-pacino?assettype=image&family=editorial&phrase=al%20pacino&sort=mostpopular&page="#input('Please Provide The Page URL: \n')
     dir = "imgs"#input('Please Provide The Directory Where The Data Will be Saved: \n')
-    pages = 5#int(input('Please Provide How Many Pages You Want To Be Scrapped: \n'))
+    pages = 100#int(input('Please Provide How Many Pages You Want To Be Scrapped: \n'))
     # driver = webdriver.Firefox()
     driver = webdriver.Chrome() # IF YOU ARE USING CHROME.	
-    driver.maximize_window()
-    driver.get(url)
+    # driver.get(url)
     if not os.path.isdir(dir): # If the folder does not exist in working directory, create a new one.
         os.makedirs(dir)
     browse_page(person_name, pages, dir)
