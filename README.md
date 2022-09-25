@@ -10,4 +10,4 @@ Put all the required images in the 'images' folder, and run the ML/faceDetection
 In order to scrape the data. You need to have another folder called 
 imgs
 
-then you need to run the scrapingCode, however, make sure to change the variable appropriately. and note the page= at the end, that should be kept the way it is, so that it does iterate through the pages.
+then you need to run the scrapingCode, which should be set up so that, both the people should be scraped and put into imgs, and into specific folders as well.

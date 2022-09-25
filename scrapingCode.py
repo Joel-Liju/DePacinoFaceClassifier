@@ -1,3 +1,4 @@
+from random import randrange
 from selenium import webdriver
 import urllib.request
 from selenium.webdriver.common.by import By
@@ -36,13 +37,15 @@ def browse_page(person_name, pages, dir):
         time.sleep(2)
   
 if __name__ == '__main__':
-    person_name = "Al-Pacino"#input("Please Provide The Person's Name: \n") 
-    url = "https://www.gettyimages.ca/photos/al-pacino?assettype=image&family=editorial&phrase=al%20pacino&sort=mostpopular&page="#input('Please Provide The Page URL: \n')
-    dir = "imgs"#input('Please Provide The Directory Where The Data Will be Saved: \n')
-    pages = 100#int(input('Please Provide How Many Pages You Want To Be Scrapped: \n'))
+    person_name = ["Al_Pacino","Robert_De"]#input("Please Provide The Person's Name: \n") 
+    url = ["https://www.gettyimages.ca/photos/al-pacino?assettype=image&family=editorial&numberofpeople=one&phrase=al%20pacino&sort=mostpopular&page=","https://www.gettyimages.ca/photos/robert-de-niro?assettype=image&family=editorial&numberofpeople=one&phrase=robert%20de%20niro&sort=mostpopular&page="]#input('Please Provide The Page URL: \n')
+    dir = ["imgs/Al_Pacino","imgs/Robert_De"]#input('Please Provide The Directory Where The Data Will be Saved: \n')
+    pages = [55,100]#int(input('Please Provide How Many Pages You Want To Be Scrapped: \n'))
     # driver = webdriver.Firefox()
     driver = webdriver.Chrome() # IF YOU ARE USING CHROME.	
     # driver.get(url)
-    if not os.path.isdir(dir): # If the folder does not exist in working directory, create a new one.
-        os.makedirs(dir)
-    browse_page(person_name, pages, dir)
+    for di in dir:
+        if not os.path.isdir(di): # If the folder does not exist in working directory, create a new one.
+            os.makedirs(di)
+    for i in range(2):
+        browse_page(person_name[i], pages[i], dir[i])
