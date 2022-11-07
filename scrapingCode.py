@@ -16,8 +16,9 @@ def download_image(person_name, src, seq, dir):
         pass
 
 
-def browse_page(person_name, pages, dir):
+def browse_page(person_name, pages, dir, url):
     seq = 0 #initialize the file number. 
+    print(url)
     for i in range(pages): # Loop for the number of pages you want to scrape.
         try:
             driver.get(url+str(i))
@@ -48,4 +49,4 @@ if __name__ == '__main__':
         if not os.path.isdir(di): # If the folder does not exist in working directory, create a new one.
             os.makedirs(di)
     for i in range(2):
-        browse_page(person_name[i], pages[i], dir[i])
+        browse_page(person_name[i], pages[i], dir[i], url[i])

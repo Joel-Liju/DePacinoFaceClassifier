@@ -2,3 +2,5 @@ finalImages
 images
 chromedriver.exe
 imgs
+ML/__pycache__
+model.pt

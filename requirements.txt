@@ -1,2 +1,7 @@
 opencv-python
 ImageHash
+split-folders
+torch
+torchvision
+scikit-image
+dlib
